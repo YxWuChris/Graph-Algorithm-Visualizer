@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane fx:id="editPage" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
+   <children>
+   <VBox maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+     <children>
+       <MenuBar VBox.vgrow="NEVER">
+         <menus>
+           <Menu mnemonicParsing="false" text="File">
+             <items>
+               <MenuItem mnemonicParsing="false" onAction="#save" text="Save" />
+               <MenuItem mnemonicParsing="false" onAction="#goBack" text="Quit" />
+             </items>
+           </Menu>
+           <Menu mnemonicParsing="false" text="Edit">
+             <items>
+               <MenuItem mnemonicParsing="false" text="Undo" />
+               <MenuItem mnemonicParsing="false" text="Redo" />
+               <SeparatorMenuItem mnemonicParsing="false" />
+               <MenuItem mnemonicParsing="false" onAction="#reset" text="Reset" />
+             </items>
+           </Menu>
+           <Menu mnemonicParsing="false" text="Help">
+             <items>
+               <MenuItem mnemonicParsing="false" text="About InnerRoot" />
+             </items>
+           </Menu>
+         </menus>
+       </MenuBar>
+       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="443.0" prefWidth="678.0" VBox.vgrow="ALWAYS">
+            <children>
+               <SplitPane dividerPositions="0.5" prefHeight="351.3333333333333" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                 <items>
+                     <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                       <tabs>
+                         <Tab onSelectionChanged="#changeToBFS" text="BFS">
+                              <content>
+                                 <Accordion>
+                                    <panes>
+                                       <TitledPane animated="false" text="Introduction">
+                                             <content>
+                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="417.3333333333333">
+                                                <children>
+                                                   <TextArea editable="false" layoutX="10.0" layoutY="340.0" prefHeight="350.0" prefWidth="570.0" text="Breadth-first search:&#10;&#10;Breadth-first search (BFS) is one of the most fundamental algorithms for traversing or searching tree for graph data structures. BFS and its application in finding connected components of graphs were first invented by Konrad Zuse and Michael Burke (1945) in their Ph.D. thesis which was published in 1972, at the same time, it was reinvented by Edward F. Moore (1959) by solving shortest path problems and later improved by C. Y. Lee into a wire routing algorithm (published 1961). BFS is frequently used in searching goal node in an undirected graph. BFS is regarded as the prototype of many important graph algorithms.&#10;&#10;To implement BFS algorithm with tree data structure, starting from the tree root node and then explores all the nodes which are contiguous, then moving to next layer if the goal node is not reached. BFS traverses all nodes in graph systemically without considering the possible position of goal node, it belongs to blind search essentially.  &#10;&#10;Complexity:&#10;1. Time: O( |V| + |E| )&#10;&#10;Hints: V is the number of vertexes in the graph, E is the number of edges in an undirected graph or the numbers of arcs.&#10;&#10;" wrapText="true" />
+                                                   <TextArea editable="false" layoutX="10.0" layoutY="220.0" prefHeight="95.0" prefWidth="570.0" text="result  [A, B, C, D, E, H, I, F, G]" />
+                                                   <Label layoutX="10.0" layoutY="200.0" text="Output:" />
+                                                   <Label layoutX="10.0" layoutY="10.0" text="Sample input graph:" />
+                                                   <Label layoutX="10.0" layoutY="320.0" text="Description:" />
+                                                      <ImageView fitHeight="177.0" fitWidth="304.0" layoutX="159.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@Search.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                </children>
+                                             </AnchorPane>
+                                             </content>
+                                       </TitledPane>
+                                       <TitledPane animated="false" text="Graph">
+                                          <content>
+                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                <children>
+                                                      <Pane fx:id="drawPane" layoutX="16.0" layoutY="10.0" prefHeight="640.0" prefWidth="560.0" style="-fx-border-color: #000000;" />
+                                                   <ToolBar layoutY="661.0" prefHeight="40.0" prefWidth="596.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                     <items>
+                                                            <Button fx:id="run" mnemonicParsing="false" onAction="#calculate" text="Run" textFill="#e80e0e" />
+                                                            <RadioButton fx:id="addNode" selected="true" text="Add Node">
+                                                               <toggleGroup>
+                                                                  <ToggleGroup fx:id="Add" />
+                                                               </toggleGroup>
+                                                            </RadioButton>
+                                                            <RadioButton fx:id="addPath" text="Add Path" toggleGroup="$Add" />
+                                                         <Button mnemonicParsing="false" text="&lt;&lt;" />
+                                                         <Button mnemonicParsing="false" text="||" />
+                                                         <Button mnemonicParsing="false" text="&gt;&gt;" />
+                                                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Delay:" />
+                                                         <TextField prefWidth="40.0" />
+                                                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="sec" />
+                                                     </items>
+                                                   </ToolBar>
+                                                </children>
+                                                </AnchorPane>
+                                          </content>
+                                       </TitledPane>
+                                    </panes>
+                                 </Accordion>
+                              </content>
+                           </Tab>
+                           <Tab onSelectionChanged="#changeToDFS" text="DFS">
+                              <content>
+                                 <Accordion>
+                                   <panes>
+                                     <TitledPane animated="false" text="Introduction">
+                                             <content>
+                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="417.3333333333333">
+                                                <children>
+                                                   <TextArea layoutX="10.0" layoutY="340.0" prefHeight="350.0" prefWidth="570.0" text="DFS:&#10;&#10;Depth-first search (DFS) is one of the most classical algorithms for traversing or searching tree for graph data structures. The first version of DFS algorithm were invented the 19th century by French mathematician Charles Pierre Trémaux for solving mazes problems, it is frequently used in searching goal node in an undirected graph. DFS is regarded as the prototype of many important graph algorithms.&#10;&#10;To implement DFS algorithm with tree data structure, starting from the tree root node and then traversing the whole tree along with the depth of tree, searching branches of tree as deep as possible, when all path of a node is reached then backtracking to the parent node of this node, continue searching until finding the goal node, every node only can be visited once. DFS traverses all nodes in graph systemically without considering the possible position of goal node, it belongs to blind search essentially.  &#10;&#10;Complexity:&#10;1. Time: O( |V| + |E| )&#10;&#10;Hints: V is the number of vertexes in the graph, E is the number of edges in an undirected graph or the numbers of arcs. the main difference between BFS and DFS is the order of traversing, so they have the same complexity." wrapText="true" />
+                                                   <TextArea layoutX="10.0" layoutY="220.0" prefHeight="95.0" prefWidth="570.0" text="result  [A, B, D, E, F, G, C, H, I]" />
+                                                   <Label layoutX="10.0" layoutY="200.0" text="Output:" />
+                                                   <Label layoutX="10.0" layoutY="10.0" text="Sample input graph:" />
+                                                   <Label layoutX="10.0" layoutY="320.0" text="Description:" />
+                                                      <ImageView fitHeight="177.0" fitWidth="304.0" layoutX="159.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@Search.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                </children>
+                                             </AnchorPane>
+                                             </content>
+                                     </TitledPane>
+                                          <TitledPane animated="false" text="Graph">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Pane fx:id="drawPane2" layoutX="16.0" layoutY="10.0" prefHeight="642.0" prefWidth="562.0" style="-fx-border-color: #000000;" />
+                                                      <ToolBar layoutY="661.0" prefHeight="40.0" prefWidth="596.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                         <items>
+                                                            <Button fx:id="run2" mnemonicParsing="false" onAction="#calculate" text="Run" textFill="#e80e0e" />
+                                                            <RadioButton fx:id="addNode2" selected="true" text="Add Node">
+                                                               <toggleGroup>
+                                                                  <ToggleGroup fx:id="Add" />
+                                                               </toggleGroup>
+                                                            </RadioButton>
+                                                            <RadioButton fx:id="addPath2" text="Add Path" toggleGroup="$Add" />
+                                                            <Button mnemonicParsing="false" text="&lt;&lt;" />
+                                                            <Button mnemonicParsing="false" text="||" />
+                                                            <Button mnemonicParsing="false" text="&gt;&gt;" />
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Delay:" />
+                                                            <TextField prefWidth="40.0" />
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="sec" />
+                                                         </items>
+                                                      </ToolBar>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </TitledPane>
+                                   </panes>
+                                 </Accordion>
+                              </content>
+                           </Tab>
+                       </tabs>
+                     </TabPane>
+                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="349.0" prefWidth="361.0">
+                        <children>
+                           <SplitPane dividerPositions="0.5" layoutX="87.0" layoutY="75.0" orientation="VERTICAL" prefHeight="349.3333333333333" prefWidth="380.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                             <items>
+                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                    <children>
+                                       <Label layoutX="7.0" layoutY="6.0" text="Code" />
+                                          <WebView fx:id="cshock" layoutX="14.0" layoutY="26.0" prefHeight="339.0" prefWidth="565.0" />
+                                    </children>
+                                 </AnchorPane>
+                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                    <children>
+                                       <Label layoutX="7.0" layoutY="7.0" text=" Variables" />
+                                       <TableView fx:id="table" layoutX="1.0" layoutY="25.0" prefHeight="356.0" prefWidth="584.0">
+                                         <columns>
+                                           <TableColumn fx:id="name" minWidth="6.494873046875" prefWidth="291.30401611328125" text="Name" />
+                                           <TableColumn fx:id="value" prefWidth="291.19598388671875" text="Value" />
+                                         </columns>
+                                       </TableView>
+                                    </children>
+                                 </AnchorPane>
+                             </items>
+                           </SplitPane>
+                        </children>
+                     </AnchorPane>
+                 </items>
+               </SplitPane>
+            </children>
+       </AnchorPane>
+     </children>
+   </VBox>
+   </children>
+</AnchorPane>
